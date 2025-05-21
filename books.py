@@ -61,6 +61,7 @@ async def update_book(updated_book=Body()):
         book_title = BOOKS[i].get('title')
         if book_title and book_title.casefold() == updated_book.get('title').casefold():
             BOOKS[i] = updated_book
+            break
     return BOOKS
 
 @app.delete('/books/delete_book')
@@ -69,4 +70,5 @@ async def delete_book(delete_book=Body()):
         book_title = BOOKS[i].get('title')
         if book_title and book_title.casefold() == delete_book.get('title').casefold():
            BOOKS.pop(i)
+           break
     return BOOKS
